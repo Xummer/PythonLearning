@@ -4,12 +4,10 @@
 import sys
 import subprocess
 
-#print "%s" % platform.system()
-
 def sha1File(filepath):
-  sha = ["sh1sum", "openssl sha1"]
+  sha = ["sha1sum", "openssl sha1"]
   for i in sha:
-    cmd = "%s %s" % (i, filepath)
+    cmd = "%s %s | egrep -o \"([A-Fa-z0-9]){40}\"" % (i, filepath)
     p = subprocess.Popen(
         cmd,
         shell=True,
@@ -17,15 +15,15 @@ def sha1File(filepath):
         stderr=subprocess.PIPE)
     p.wait()
     if p.returncode == 0:
-      print "test ---"
-      print p.stdout.readline()
+      return p.stdout.readline()
       break
 
 def main():
   if len(sys.argv) == 1:
     print "Please input 1 filepath at least"
   else:
-    sha1File(sys.argv[1])
+    shasum = sha1File(sys.argv[1])
+    print shasum
 
 if __name__ == '__main__':
   main()
