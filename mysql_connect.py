@@ -7,7 +7,7 @@ import MySQLdb
 #SQL host
 
 # 打开数据库连接
-db = MySQLdb.connet("localhost","appadmin","admin","cptn");
+db = MySQLdb.connect(host='localhost', user='root', passwd='root', db='cptn', port=3306, charset='utf8');
 
 # 使用cursor()获取操作游标
 cursor = db.cursor();
