@@ -15,8 +15,12 @@ def sha1File(filepath):
         stderr=subprocess.PIPE)
     p.wait()
     if p.returncode == 0:
-      return p.stdout.readline()
-      break
+      out = p.communicate()
+      shasum = out[0].strip("\n")
+      print shasum + " end"
+      if len(shasum) > 0:
+        return shasum
+        break
 
 def main():
   if len(sys.argv) == 1:
