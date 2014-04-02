@@ -5,7 +5,9 @@ function createpy(){
   echo "#!/usr/bin/env python" > $1
   echo "# -*- coding: utf-8 -*" >> $1
   echo "# Filename : $1" >> $1
-  vim $1
+  
+  #vim $1
+  open $1
 }
 
 if [ -z $1 ]
