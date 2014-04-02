@@ -17,7 +17,7 @@ def sha1File(filepath):
     if p.returncode == 0:
       out = p.communicate()
       shasum = out[0].strip("\n")
-      print shasum + " end"
+      print shasum
       if len(shasum) > 0:
         return shasum
         break
